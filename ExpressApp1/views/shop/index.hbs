@@ -337,21 +337,30 @@
 
                             </a>
 
-
                             <div class="product-item-details">
                                 <h3 class="product-item-heading">
                                     <a href="http://www2.hm.com/ru_ru/productpage.0301227002.html">{{this.title}}</a>
                                 </h3>
 
                                 <strong class="price">
-                                   {{this.price}}&nbsp;$
-                                </strong>
+                                    $ &nbsp;{{this.price}}
+                                </strong>                               
 
-                                <ul class="list-swatches">
+
+                                <a class="button button-big button-buy product-details-favorite" href="/add-to-cart/{{this._id}}"
+                                         data-not-added-text="Вы должны выбрать имеющийся в наличии размер"
+                                         data-added-text="Товар добавлен" data-shopping-bag-text="Корзина"
+                                         data-shopping-bag-failed-text="При добавлении товара в корзину произошла ошибка" 
+                                        data-quantity-text="Количество" data-color-text="Цвет" data-size-text="Размер" 
+                                        data-default-quantity="1" data-sold-out-text="Распродано" 
+                                        data-not-added-sold-out-text="Изделие данного цвета распродано во всех размерах">Добавить в корзину</a>
+
+
+                                <!--<ul class="list-swatches">
                                     <li class="item">
                                         <img class="swatch" src="./content/hmprod(1)" alt="Черный" title="Черный">
                                     </li>
-                                </ul>
+                                </ul>-->
                             </div>
                         </article>
                     </div>
@@ -363,6 +372,24 @@
         </section> 
     </div>
 
-    <a class="load-more-link button infinite-scroll" data-offset-query-param="offset" data-page-size-query-param="page-size" data-count-selector=".product-item" data-target-selector=".product-items-wrapper" data-per-page="30" data-per-page-query-param="per_page" data-page-query-param="page" data-load-more-url="/ru_ru/muzhchiny/vybrat-kategoriyu/noski/_jcr_content/main/productlisting.display.html" data-is-product-list="true" href="http://www2.hm.com/ru_ru/muzhchiny/vybrat-kategoriyu/noski/_jcr_content/main/productlisting.display.html" aria-hidden="true">Загрузить еще изделия</a>
+    <a class="load-more-link button infinite-scroll" 
+       data-offset-query-param="offset"
+        data-page-size-query-param="page-size"
+        data-count-selector=".product-item" 
+       data-target-selector=".product-items-wrapper" 
+       data-per-page="30" 
+       data-per-page-query-param="per_page"
+        data-page-query-param="page" 
+       data-load-more-url="/ru_ru/muzhchiny/vybrat-kategoriyu/noski/_jcr_content/main/productlisting.display.html" 
+       data-is-product-list="true" href="http://www2.hm.com/ru_ru/muzhchiny/vybrat-kategoriyu/noski/_jcr_content/main/productlisting.display.html" 
+       aria-hidden="true">Загрузить еще изделия</a>
     <div class="clearfix"></div>
 </div>
+
+
+<script type="text/javascript" >
+
+    $(".js-expandtrigger").click(function () {
+        $(this).next().toggle();
+    });
+</script>

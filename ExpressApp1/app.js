@@ -52,7 +52,7 @@ app.use(function (req, res, next) {
     app.locals.login = req.isAuthenticated();
     app.locals.session = req.session;
     if (req.isAuthenticated()) {
-        console.log(req.user.username); app.locals.user = req.user;
+        console.log(req.user.email); app.locals.user = req.user.email;
     }
         
 

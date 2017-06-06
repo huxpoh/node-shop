@@ -2794,7 +2794,9 @@ tfoot {
 }
 
 .col-3 {
-    width: 222px;
+    width: 219px;
+    border:1px solid #d7d7d7;
+    margin-bottom:9px;
 }
 
 .col-4 {
@@ -19984,7 +19986,7 @@ html[lang=zh] .button.button-chat > span, html[lang=zh] .story-item.story-item-n
 }
 
 .session-menu .signin-not-signed-in {
-    display: none;
+    /*display: none;*/
 }
 
 .not-signed-in .session-menu .signin-not-signed-in {
