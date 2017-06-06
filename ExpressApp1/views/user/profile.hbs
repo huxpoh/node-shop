@@ -1,0 +1,16 @@
+﻿<h1>profile</h1>
+{{# each docs}}
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <div class="thumbnail">
+            <div style="text-align:justify;">{{this.session}}</div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-12">
+        <div class="thumbnail">
+            <div>{{this.expires}}</div>
+        </div>
+    </div>
+</div>
+{{/ each}}

@@ -1,0 +1,173 @@
+<header class="header-global">
+    <div class="warehousemessage"></div>
+    <div class="wrapper">
+        <a href="http://www2.hm.com/ru_ru/index.html" title="HM.com" class="logotype hidden-text">HM.com</a>
+        <div class="parbase topnav">
+            <nav class="primary-menu">
+                <ul>
+                    <li>
+                        <a href="http://www2.hm.com/ru_ru/zhenshchiny.html">Женщины</a>
+                    </li>
+                    <li class="current">
+                        <a href="http://www2.hm.com/ru_ru/muzhchiny.html">Мужчины</a>
+                    </li>
+                    <li>
+                        <a href="http://www2.hm.com/ru_ru/deti.html">Дети</a>
+                    </li>
+                    <li>
+                        <a href="http://www2.hm.com/ru_ru/home.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="http://www2.hm.com/ru_ru/sale.html">РАСПРОДАЖА</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <nav class="services-menu">
+            <!-- Services menu -->
+            <div class="linklist parbase linklist1">
+                <ul class="list">
+                    <li class="item">
+                        <a class="link" href="http://www2.hm.com/ru_ru/customer-service.html">Служба поддержки покупателей</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="http://www2.hm.com/ru_ru/customer-service/newsletter.html">Новостная рассылка</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="linklist parbase linklist2">
+                <ul class="list">
+                    <li class="item">
+                        <a class="link" href="http://www2.hm.com/ru_ru/customer-service/shopping-at-hm/store-locator.html">Найти магазин</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="http://www2.hm.com/ru_ru/customer-service/download-app.html">Скачать приложение</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- /Services menu -->
+        <nav class="session-menu">
+            <!-- Session menu -->
+            <div class="session-menu-top-row">
+                <a href="http://www2.hm.com/ru_ru/favourites" class="js-favorite-entry-point favorite-entry-point is-favorite icon-favorites-dark icon">
+                    Избранное
+                </a>
+                <span class="parbase minicart">
+                    <div class="shopping-bag rollover-popdown is-loaded" data-cart="/ru_ru/minicart/view">
+                        <a href="http://www2.hm.com/ru_ru/cart" class="goto-shopping-bag rollover-toggle">
+                            Корзина
+                            (<span class="shoppingbag-item-count">{{session.cart.totalQty}}</span>)
+                        </a>
+                        <div class="shopping-bag-rollover row popdown"></div>
+                    </div>
+                </span>
+            </div>
+            <div class="signin rollover-popdown" data-target="click">
+                <div class="parbase account">
+                    <div class="signin rollover-popdown" data-target="click">
+                        {{# if login}}
+                        <div class="signin-signed-in">
+                            <span class="greeting-text"> Добрый день, {{user}}<a class="goto-signed-in" href="https://www2.hm.com/ru_ru/my-account" rel="noreferrer"> </a> </span>
+                            <a class="goto-my-hm" href="https://www2.hm.com/ru_ru/my-account/overview" rel="noreferrer">Мой H&amp;M</a>
+                            <a class="goto-sign-in" href="https://www2.hm.com/ru_ru/logout">Выйти</a>
+                        </div>
+                        {{else}}
+                        <div class="signin-not-signed-in">
+                            <a class="goto-my-hm" href="https://www2.hm.com/ru_ru/my-account" rel="noreferrer">Мой H&amp;M</a>
+                            <a href="http://www2.hm.com/ru_ru/muzhchiny/vybrat-kategoriyu/noski.html?product-type=men_socks&amp;sort=stock&amp;offset=0&amp;page-size=90#" class="goto-sign-in rollover-toggle" onclick="trackLinkAccountHeader()">Зарегистрироваться / Войти</a>
+                            <div class="signin-rollover popdown row">
+                                <div class="inner">
+                                    <div class="signin-rollover-login">
+                                        <form class="responsive form-section" action="https://www2.hm.com/ru_ru/j_spring_security_check" onsubmit="trackSubmitLogin()" method="POST">
+                                            <h3>Войти</h3>
+                                            <div class="input-group">
+                                                <label for="txt-signin-rollover-email">Эл. почта:</label>
+                                                <input name="j_username" type="email" placeholder="" id="txt-signin-rollover-email" data-validation-email="true" data-validation-email-text="Пожалуйста, укажите правильный адрес электронной почты" data-validation-required-text="Вы должны указать адрес электронной почты" data-validation-required="true">
+                                            </div>
+                                            <div class="input-group">
+                                                <label for="txt-signin-rollover-password">Пароль:</label>
+                                                <input name="j_password" type="password" id="txt-signin-rollover-password" data-validation-required-text="Вы должны указать пароль" data-validation-required="true" data-validation-minlength="6" data-validation-minlength-text="Пароль должен содержать минимум 6 символов" data-validation-maxlength="25" data-validation-maxlength-text="Пароль слишком длинный. Максимально допустимое количество символов — 25">
+                                            </div>
+                                            <div class="input-group">
+                                                <input type="submit" class="button-big" value="Войти" data-validation-text="Эту форму не удалось отправить. Пожалуйста, проверьте указанную Вами информацию" data-validation-required="true">
+                                                <p>
+                                                    <a href="https://www2.hm.com/ru_ru/password/requestSignIn" class="underline">Забыли пароль?</a>
+                                                </p>
+                                            </div>
+                                            <div class="input-group join">
+                                                <input type="button" class="large fluid secondary button" value="ПРИСОЕДИНЯЙТЕСЬ К НАМ" onclick="trackClickButtonCreateNewAccount()">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="signin-rollover-join">
+                                        <section class="responsive create-account popdown-form">
+                                            <form action="https://www2.hm.com/ru_ru/register/newcustomer" onsubmit="trackSubmitJoin()" method="POST" class="responsive form-section">
+                                                <fieldset class="form-part">
+                                                    <legend class="heading">Создать учетную запись H&amp;M </legend>
+                                                    <div class="inputwrapper">
+                                                        <label class="form-label" for="txt-signin-rollover-join-email">Эл. почта:</label>
+                                                        <input type="email" class="email-input" name="email" id="txt-signin-rollover-join-email" value="" data-validation-email="true" data-validation-required="true" data-validation-required-text="Вы должны указать адрес электронной почты">
+                                                    </div>
+                                                    <div class="inputwrapper">
+                                                        <label class="form-label" for="txt-signin-rollover-join-password">Пароль:</label>
+                                                        <input type="password" name="pwd" id="txt-signin-rollover-join-password" class="password-input" data-validation-required="true" data-validation-required-text="Вы должны подтвердить Ваш пароль" data-validation-minlength="6" data-validation-minlength-text="Пароль должен содержать минимум 6 символов" data-validation-maxlength="25" data-validation-maxlength-text="Пароль слишком длинный. Максимально допустимое количество символов — 25" data-validation-nospaces="true" data-validation-nospaces-text="Пароль не должен содержать пробелы">
+                                                    </div>
+                                                    <div class="inputwrapper">
+                                                        <label class="form-label" for="txt-signin-rollover-join-password-confirm">Подтвердить пароль:</label>
+                                                        <input type="password" id="txt-signin-rollover-join-password-confirm" name="checkPwd" class="password-input" data-validation-required="true" data-validation-required-text="Вы должны подтвердить Ваш пароль" data-validation-confirm-id="txt-signin-rollover-join-password" data-validation-confirm-text="Ваш пароль и повторно указанный Вами пароль не совпадают">
+                                                    </div>
+                                                </fieldset>
+                                                <fieldset class="form-part">
+                                                    <ul class="input-list">
+                                                        <li id="account-exclusiveofferstext-checkbox" class="inputwrapper account-exclusiveofferstext-checkbox">
+                                                            <input type="checkbox" class="checkbox-input" id="chb-signin-rollover-join-offers" name="hmNewsSubscription">
+                                                            <label class="checkbox-label" for="chb-signin-rollover-join-offers">
+                                                                Я хочу получать сообщения об эксклюзивных предложениях и новостях на свою почту и мне больше 16 лет.&nbsp;
+                                                            </label>
+                                                        </li>
+                                                        <li class="inputwrapper">
+                                                            <input type="checkbox" class="checkbox-input" id="chb-signin-rollover-join-terms" name="termsAndConditions" data-validation-required="true">
+                                                            <label class="checkbox-label" for="chb-signin-rollover-join-terms">
+                                                                <span id="privacy-policy"><a href="http://www2.hm.com/ru_ru/customer-service/privacy-link.html" class="underline overlay-trigger">Да, я соглашаюсь с политикой конфиденциальности</a></span>
+                                                                <span id="club-terms" class="hidden">I accept the H&amp;M Club {0}Terms &amp; conditions{1} and I am xx years old. I want to receive newsletters including fashion, inspiration and offers, and I accept the {0}Privacy Policy{1}.</span>
+                                                            </label>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="button-group">
+                                                        <button type="submit" class="button large" data-validation-text="Эту форму не удалось отправить. Пожалуйста, проверьте указанную Вами информацию">ПРИСОЕДИНЯЙТЕСЬ К НАМ</button>
+                                                        <button type="button" class="big secondary button large" onclick="trackClickButtonBack()">ВЕРНУТЬСЯ, ЧТОБЫ ВОЙТИ</button>
+                                                    </div>
+                                                </fieldset>
+                                            </form>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            <div class="country-info">
+                <div class="countrylanguage parbase">
+                    <div class="country-info">
+                        <a class="country-name overlay-trigger " data-layout="confirm" data-modal-scrollup="false" href="http://www2.hm.com/ru_ru/_jcr_content/header/countrylanguage.changecountry.html">Россия</a> | Руб
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- /Session menu -->
+        <div class="autosuggestsearch parbase">
+            <div id="search-field" class="ui-widget">
+                <form method="get" action="http://www2.hm.com/ru_ru/search-results.html">
+                    <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                    <input id="main-search" data-url="/content/hmonline/ru_ru/jcr:content/header/autosuggestsearch.display.html" type="text" data-test="false" name="q" placeholder="Искать товары" minlength="3" maxlength="200" data-autocomplete-disabled="false" class="ui-autocomplete-input" autocorrect="off" spellcheck="false" autocomplete="off">
+                </form>
+                <span class="magnify"></span>
+                <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-1" tabindex="0" style="display: none;"></ul>
+            </div>
+        </div>
+        <span class="js-cookie-message-url" data-message-url="/ru_ru/_jcr_content/header.cookies.html"></span>
+    </div>
+</header>

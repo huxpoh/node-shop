@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/icons.data.svg.css" media="all">
+    <link rel="stylesheet" href="/shared.min.css" type="text/css">
+    <link rel="stylesheet" href="/general.min.css" type="text/css">
+    <link rel="stylesheet" href="/checkout.min.css" type="text/css">
+    <link rel="stylesheet" href="/myhm.min.css" type="text/css">
+    <link rel="stylesheet" href="/icons.data.svg.css" media="screen" type="text/css">
+    <title>Мужские носки по самым выгодным ценам | H&amp;M RU{{title}}</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    {{> pop-up }}
+
+    {{> header }}
+    <main role="main" class="responsive segments">
+        {{> breadcrumb }}
+        <div class="layout">
+            <section class="sidebarpluscontent modules">
+                <aside class="aside section-menu">
+                    <div class="left parbase">
+                        {{> nav-menu }}
+                    </div>
+
+                    <div class="left-bottom parsys"></div>
+                </aside>
+                <div class="parsys main">
+                    {{{body}}}
+                </div>
+            </section>
+        </div>
+        <div class="parbase overlaycontainer"></div>
+    </main>
+
+    {{> footer }}
+    <!-- /Footer -->
+    <div class="tealiumPageviewtag parbase pageview">
+    </div>
+    <span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span>
+    <div class="modaloverlay responsive hidden">
+        <div class="modalbackground"></div>
+    </div>
+</body>
+</html>
