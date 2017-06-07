@@ -44,12 +44,39 @@ router.get('/signin', function (req, res, next) {
     res.render('user/signin', { csrfToken: req.csrfToken(), messages: messages, hasErrors: messages.length > 0 });
 });
 
-router.post('/signin', passport.authenticate('local.signin',
-    {
-        successRedirect: '/user/profile',
-        failureRedirect: '/user/signin',
-        failureFlash: true
-    }));
+//router.post('/signin', passport.authenticate('local.signin',
+//    {
+//        successRedirect: '/user/profile',
+//        failureRedirect: '/user/signin',
+//        failureFlash: true
+//    }));
+
+
+router.post('/signin', function (req, res, next) {
+    passport.authenticate('local.signin', function (err, user, info) {
+        if (err) { return next(err); }
+        if (!user) {
+             return res.redirect('/');
+        }
+
+        
+        req.logIn(user, function (err) {
+            if (err) {
+                return next(err);
+            }
+            //OPEN ISSUE AJAX RENDER PARTIAL AFTER LOGIN
+            //return !req.xhr ? res.redirect('/user/profile') :
+            //                 res.render('partials/header', { layout: false });
+
+            return res.redirect('/user/profile');
+        });
+
+    })(req, res, next);
+
+});
+
+
+
 
 function isLoggedIn(req,res,next) {
     if (req.isAuthenticated()) {

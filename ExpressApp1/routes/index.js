@@ -19,7 +19,7 @@ router.get('/', function (req, res, next) {
             productChunks.push(docs.slice(i, i + chunkSize));
         }
          
-        res.render('shop/index', { title: 'Shopping Cart', products: productChunks });
+        res.render('shop/index', { title: 'Shopping Cart', products: productChunks, csrfToken: req.csrfToken()});
     });
 });
 

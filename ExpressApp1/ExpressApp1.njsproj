@@ -33,6 +33,7 @@
     <Compile Include="app.js" />
     <Compile Include="config\passport.js" />
     <Compile Include="models\cart.js" />
+    <Compile Include="models\category.js" />
     <Compile Include="models\product.js" />
     <Compile Include="models\session.js" />
     <Compile Include="models\user.js" />
@@ -55,6 +56,7 @@
     <Content Include="public\stylesheets\style.css" />
     <Content Include="README.md" />
     <Content Include="typings.json" />
+    <Content Include="views\admin\tree.hbs" />
     <Content Include="views\error.hbs" />
     <Content Include="views\layouts\layout.hbs" />
     <Content Include="views\partials\breadcrumb.hbs" />
@@ -84,6 +86,7 @@
     <Folder Include="routes\" />
     <Folder Include="views\" />
     <Folder Include="views\layouts\" />
+    <Folder Include="views\admin\" />
     <Folder Include="views\user\" />
     <Folder Include="views\partials\" />
     <Folder Include="views\shop\" />

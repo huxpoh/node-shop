@@ -70,33 +70,52 @@
                         <div class="signin-signed-in">
                             <span class="greeting-text"> Добрый день, {{user}}<a class="goto-signed-in" href="https://www2.hm.com/ru_ru/my-account" rel="noreferrer"> </a> </span>
                             <a class="goto-my-hm" href="https://www2.hm.com/ru_ru/my-account/overview" rel="noreferrer">Мой H&amp;M</a>
-                            <a class="goto-sign-in" href="https://www2.hm.com/ru_ru/logout">Выйти</a>
+                            <a class="goto-sign-in" href="/user/logout">Выйти</a>
                         </div>
                         {{else}}
+
+                        <!--<form method="post" action="/user/signin">
+
+                            <div class="form-group">
+                                <label for="email">email</label>
+                                <input type="email" value="" id="email" name="email" class="form-control" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">password</label>
+                                <input type="password" value="" id="email" name="password" class="form-control" />
+                            </div>
+                            <input type="hidden" value="{{csrfToken}}" name="_csrf" />
+
+                            <button class="btn btn-sm btn-success">Sign up</button>
+                        </form>-->
+
                         <div class="signin-not-signed-in">
                             <a class="goto-my-hm" href="https://www2.hm.com/ru_ru/my-account">Мой H&amp;M</a>
-                            <a href="/user/signup">Зарегистрироваться / Войти</a>
+                            <a href="/user/signup" class="js-open-signin-signup">Зарегистрироваться / Войти</a>
                             <div class="signin-rollover popdown row">
                                 <div class="inner">
                                     <div class="signin-rollover-login">
-                                        <form class="responsive form-section" action="https://www2.hm.com/ru_ru/j_spring_security_check" onsubmit="trackSubmitLogin()" method="POST">
+                                        <form class="responsive form-section" method="post" action="/user/signin">
                                             <h3>Войти</h3>
                                             <div class="input-group">
-                                                <label for="txt-signin-rollover-email">Эл. почта:</label>
-                                                <input name="j_username" type="email" placeholder="" id="txt-signin-rollover-email" data-validation-email="true" data-validation-email-text="Пожалуйста, укажите правильный адрес электронной почты" data-validation-required-text="Вы должны указать адрес электронной почты" data-validation-required="true">
+                                                <label for="email">Эл. почта:</label>
+                                                <input type="email" value="" id="email" name="email">
                                             </div>
                                             <div class="input-group">
-                                                <label for="txt-signin-rollover-password">Пароль:</label>
-                                                <input name="j_password" type="password" id="txt-signin-rollover-password" data-validation-required-text="Вы должны указать пароль" data-validation-required="true" data-validation-minlength="6" data-validation-minlength-text="Пароль должен содержать минимум 6 символов" data-validation-maxlength="25" data-validation-maxlength-text="Пароль слишком длинный. Максимально допустимое количество символов — 25">
+                                                <label for="password">Пароль:</label>
+                                                <input  type="password" value="" id="email" name="password">
                                             </div>
+                                            <input type="hidden" value="{{csrfToken}}" name="_csrf" />
+                                            {{csrfToken}}
                                             <div class="input-group">
-                                                <input type="submit" class="button-big" value="Войти" data-validation-text="Эту форму не удалось отправить. Пожалуйста, проверьте указанную Вами информацию" data-validation-required="true">
+                                                <button class="button-big signin-button">Войти</button>                                                
                                                 <p>
-                                                    <a href="https://www2.hm.com/ru_ru/password/requestSignIn" class="underline">Забыли пароль?</a>
+                                                    <a href="/user/forgot-password" class="underline">Забыли пароль?</a>
                                                 </p>
                                             </div>
                                             <div class="input-group join">
-                                                <input type="button" class="large fluid secondary button" value="ПРИСОЕДИНЯЙТЕСЬ К НАМ" onclick="trackClickButtonCreateNewAccount()">
+                                                <a type="button" href="/user/signup" class="large fluid secondary button" >ПРИСОЕДИНЯЙТЕСЬ К НАМ </a>
                                             </div>
                                         </form>
                                     </div>
@@ -171,3 +190,25 @@
         <span class="js-cookie-message-url" data-message-url="/ru_ru/_jcr_content/header.cookies.html"></span>
     </div>
 </header>
+
+
+<script type="text/javascript">
+
+    $(".js-open-signin-signup").click(function (e) {
+        e.preventDefault();
+        $(this).next().toggle();
+    });
+
+
+    $(".signin-button").click(function (e) {
+        e.preventDefault();
+
+        console.log("sex");
+        console.log($(this).closest('form'));
+
+        $.post('/user/signin', $(this).closest('form').serialize()).done(function (data) {
+            console.log(data);
+            $(".header-global").replaceWith(data);
+        })
+    });
+</script>

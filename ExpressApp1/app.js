@@ -46,20 +46,17 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 app.use(function (req, res, next) {
-    console.log(req.isAuthenticated());
+
     app.locals.login = req.isAuthenticated();
     app.locals.session = req.session;
-    if (req.isAuthenticated()) {
-        console.log(req.user.email); app.locals.user = req.user.email;
-    }
-        
 
-    //console.log(req.isAuthenticated());
+    if (req.isAuthenticated()) {
+       app.locals.user = req.user.email;
+    }
+
     next();
 });
-
 
 app.use('/', routes);
 app.use('/user', users);
