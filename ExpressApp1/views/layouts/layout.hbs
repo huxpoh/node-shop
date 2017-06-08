@@ -18,16 +18,21 @@
     <main role="main" class="responsive segments">
         {{> breadcrumb }}
         <div class="layout">
-            <section class="sidebarpluscontent modules">
+            <section class="{{# unless disableMenu }}sidebarpluscontent {{/unless}} modules">
+                {{# unless disableMenu }}
                 <aside class="aside section-menu">
+
                     <div class="left parbase">
                         {{> nav-menu }}
                     </div>
 
                     <div class="left-bottom parsys"></div>
                 </aside>
+                {{/unless}}
+
+                {{{body}}}
                 <div class="parsys main">
-                    {{{body}}}
+
                 </div>
             </section>
         </div>

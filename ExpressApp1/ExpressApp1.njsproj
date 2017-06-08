@@ -60,10 +60,13 @@
     <Content Include="views\error.hbs" />
     <Content Include="views\layouts\layout.hbs" />
     <Content Include="views\partials\breadcrumb.hbs" />
+    <Content Include="views\partials\cart.hbs" />
     <Content Include="views\partials\footer.hbs" />
     <Content Include="views\partials\header.hbs" />
     <Content Include="views\partials\nav-menu.hbs" />
     <Content Include="views\partials\pop-up.hbs" />
+    <Content Include="views\partials\service-item.hbs" />
+    <Content Include="views\partials\sign-popup.hbs" />
     <Content Include="views\shop\checkout-nomoney.hbs" />
     <Content Include="views\shop\checkout.hbs" />
     <Content Include="views\shop\items.txt" />

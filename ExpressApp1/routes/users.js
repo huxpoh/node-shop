@@ -4,13 +4,13 @@ var Product = require('../models/product');
 var csurf = require('csurf');
 var passport = require('passport');
 var Session = require('../models/session');
-
+var app = express();
 var csurfProtection = csurf();
 router.use(csurfProtection);
 
 router.get('/profile', isLoggedIn, function (req, res, next) {
     Session.find(function (err, docs) {
-        res.render('user/profile',{docs:docs});
+        res.render('user/profile',{ docs:docs });
     });
 });
 
@@ -54,29 +54,26 @@ router.get('/signin', function (req, res, next) {
 
 router.post('/signin', function (req, res, next) {
     passport.authenticate('local.signin', function (err, user, info) {
-        if (err) { return next(err); }
+        if (err) {
+            return next(err);
+        }
+
         if (!user) {
              return res.redirect('/');
         }
-
         
         req.logIn(user, function (err) {
             if (err) {
                 return next(err);
             }
-            //OPEN ISSUE AJAX RENDER PARTIAL AFTER LOGIN
-            //return !req.xhr ? res.redirect('/user/profile') :
-            //                 res.render('partials/header', { layout: false });
+           
+            return !req.xhr ? res.redirect('/user/profile') :
+                              res.render('partials/sign-popup', { layout: false });
 
-            return res.redirect('/user/profile');
         });
 
     })(req, res, next);
-
 });
-
-
-
 
 function isLoggedIn(req,res,next) {
     if (req.isAuthenticated()) {
@@ -93,6 +90,5 @@ function notLoggedIn(req, res, next) {
 
     res.redirect('/');
 };
-
 
 module.exports = router;

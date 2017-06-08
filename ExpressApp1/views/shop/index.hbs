@@ -322,7 +322,7 @@
     </div>
 
     <div class="product-items-wrapper">
-        <section class="product-items big productlist-row"> 
+        <section class="product-items big productlist-row">
             <div class="product-items-content">
                 {{# each products}}
                 <div class="row">
@@ -331,9 +331,11 @@
                         <article class="product-item club-price-item" data-articlecode="0301227002">
                             <a href="http://www2.hm.com/ru_ru/productpage.0301227002.html" title="10 пар носков" class="product-item-link">
                                 <img width="222" height="333" src="{{this.imagePath}}" class="product-item-image">
-                                <button type="button" class="favorite icon icon-favorites js-favorite"                                         
-                                         data-saved-text="СОХРАНЕНО КАК ИЗБРАННОЕ" 
-                                         data-not-saved-text="СОХРАНИТЬ КАК ИЗБРАННОЕ">СОХРАНИТЬ КАК ИЗБРАННОЕ</button>
+                                <button type="button" class="favorite icon icon-favorites js-favorite"
+                                        data-saved-text="СОХРАНЕНО КАК ИЗБРАННОЕ"
+                                        data-not-saved-text="СОХРАНИТЬ КАК ИЗБРАННОЕ">
+                                    СОХРАНИТЬ КАК ИЗБРАННОЕ
+                                </button>
 
                             </a>
 
@@ -344,16 +346,16 @@
 
                                 <strong class="price">
                                     $ &nbsp;{{this.price}}
-                                </strong>                               
+                                </strong>
 
 
                                 <a class="button button-big button-buy product-details-favorite" href="/add-to-cart/{{this._id}}"
-                                         data-not-added-text="Вы должны выбрать имеющийся в наличии размер"
-                                         data-added-text="Товар добавлен" data-shopping-bag-text="Корзина"
-                                         data-shopping-bag-failed-text="При добавлении товара в корзину произошла ошибка" 
-                                        data-quantity-text="Количество" data-color-text="Цвет" data-size-text="Размер" 
-                                        data-default-quantity="1" data-sold-out-text="Распродано" 
-                                        data-not-added-sold-out-text="Изделие данного цвета распродано во всех размерах">Добавить в корзину</a>
+                                   data-not-added-text="Вы должны выбрать имеющийся в наличии размер"
+                                   data-added-text="Товар добавлен" data-shopping-bag-text="Корзина"
+                                   data-shopping-bag-failed-text="При добавлении товара в корзину произошла ошибка"
+                                   data-quantity-text="Количество" data-color-text="Цвет" data-size-text="Размер"
+                                   data-default-quantity="1" data-sold-out-text="Распродано"
+                                   data-not-added-sold-out-text="Изделие данного цвета распродано во всех размерах">Добавить в корзину</a>
 
 
                                 <!--<ul class="list-swatches">
@@ -369,27 +371,33 @@
                 </div>
                 {{/ each}}
             </div>
-        </section> 
+        </section>
     </div>
 
-    <a class="load-more-link button infinite-scroll" 
+    <a class="load-more-link button infinite-scroll"
        data-offset-query-param="offset"
-        data-page-size-query-param="page-size"
-        data-count-selector=".product-item" 
-       data-target-selector=".product-items-wrapper" 
-       data-per-page="30" 
+       data-page-size-query-param="page-size"
+       data-count-selector=".product-item"
+       data-target-selector=".product-items-wrapper"
+       data-per-page="30"
        data-per-page-query-param="per_page"
-        data-page-query-param="page" 
-       data-load-more-url="/ru_ru/muzhchiny/vybrat-kategoriyu/noski/_jcr_content/main/productlisting.display.html" 
-       data-is-product-list="true" href="http://www2.hm.com/ru_ru/muzhchiny/vybrat-kategoriyu/noski/_jcr_content/main/productlisting.display.html" 
+       data-page-query-param="page"
+       data-load-more-url="/ru_ru/muzhchiny/vybrat-kategoriyu/noski/_jcr_content/main/productlisting.display.html"
+       data-is-product-list="true" href="http://www2.hm.com/ru_ru/muzhchiny/vybrat-kategoriyu/noski/_jcr_content/main/productlisting.display.html"
        aria-hidden="true">Загрузить еще изделия</a>
     <div class="clearfix"></div>
 </div>
 
 
-<script type="text/javascript" >
-
+<script type="text/javascript">
     $(".js-expandtrigger").click(function () {
         $(this).next().toggle();
+    });
+
+    $(".button-buy").click(function (e) {
+        e.preventDefault();
+        $.get($(this).attr('href'), function (data, status) {
+            $('.minicart').html(data);
+        });
     });
 </script>

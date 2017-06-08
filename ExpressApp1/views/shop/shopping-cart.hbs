@@ -1,58 +1,315 @@
-{{#if products}}
-<div class="row">
-    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-        <ul class="list-group">
-            {{#each products}}
-            <li class="list-group-item">
-                <span class="badge">
-                    {{this.qty}}
-                </span>
-                <strong>{{this.item.title}}</strong>
-                <span class="label label-success">
-                    ${{this.price}}
-                </span>
-                <div class="btn-group">
-                    <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">  Action  <span class="caret"></span>   </button>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#">reduce by 1</a>
-                        </li>
-                        <li>
-                            <a href="#">remove all</a>
-                        </li>
-                    </ul>
+<div class="row sticky-wrapper ng-scope" ng-controller="CartContextController">
+    <div class="grid col-8">
+        <h2 class="visuallyhidden">Товары в корзине</h2>
+  <ul ng-if="0" class="product-detail-list responsive ng-scope" id="cartPage-items" ng-class="{'club-member': getContext().isClubMember}">
+            
+            <li class="product-detail-list-item ng-scope" id="0508239001" ng-repeat="entry in getContext().cartEntries" ng-class="{'club-price-item':entry.isYellowPriceAvailable}">
+                <!-- Shopping bag item -->
+                <div class="product-detail-list-item-image-wrapper">
+                    <div class="wrapper-inner">
+                        <a href="/ru_ru/productpage.0508239001.html" class="product-detail-list-item-image ">
+                            
+                            <img ng-src="http://lp2.hm.com/hmprod%3Fset%3Dsource%5B%2Fmodel%2F2017%2FE00+0508239+001+98+2430.jpg%5D%2Ctype%5BSTILLLIFE_FRONT%5D%26hmver%3D1%26call%3Durl%5Bfile%3A%2Fproduct%2Fcart%5D" alt="Свитшот из текстурной ткани" title="Свитшот из текстурной ткани" class="product-detail-list-item-image-image" src="http://lp2.hm.com/hmprod%3Fset%3Dsource%5B%2Fmodel%2F2017%2FE00+0508239+001+98+2430.jpg%5D%2Ctype%5BSTILLLIFE_FRONT%5D%26hmver%3D1%26call%3Durl%5Bfile%3A%2Fproduct%2Fcart%5D">
+
+                        </a>
+                    </div>
                 </div>
+                <div class="product-detail-list-item-details">
+
+                    <div class="product-detail-list-item-price-info">
+                        <p class="product-detail-list-item-total-price">
+                            Итого:
+                            &nbsp;<span id="entry_new_price" class="ng-binding">1&nbsp;799 Pуб</span>
+                        </p>
+                    </div>              
+
+                    <h3 class="sub-sub-heading ng-binding">Свитшот из текстурной ткани</h3>
+                    <div ng-show="entry.isYellowPriceAvailable" class="ng-hide">
+                        <p ng-class="{'original-price' : getContext().isClubMember ,'product-detail-price':!getContext().isClubMember }" class="ng-binding product-detail-price">
+                            1&nbsp;799 Pуб
+                        </p>
+
+                        <p class="club-price-text">
+                            ЦЕНА СО СКИДКОЙ
+                            <span ng-if="!getContext().isClubMember" class="club-price ng-binding ng-scope">  </span>
+                        </p>
+                    </div>
+
+                    <div ng-hide="entry.isYellowPriceAvailable">
+                        <p class="product-detail-price ng-binding" ng-class="{'sale-price' : entry.strikedPrice}">
+                            1&nbsp;229 Pуб 
+                        </p>
+                    </div>
+
+                    <p class="product-detail-selection">
+                    </p><div class="product-item-selection ng-binding"></div>
+                    <p></p>
+                    <dl class="product-detail-list-item-details-list">
+                        <dt>
+                            № арт.:
+                        </dt>
+                        <dd class="ng-binding">0508239001</dd>
+
+                        <dt>
+                            Цвет:
+                        </dt>
+                        <dd class="ng-binding">Темно-синий</dd>
+
+                        <dt>
+                            Размер:
+                        </dt>
+                        <dd class="ng-binding">M</dd>
+                    </dl>
+
+                </div>
+                <div class="product-detail-list-item-actions">
+                    <button class="button secondary icon icon-trash" type="button" title="Remove product" ng-click="removeItem(entry.variantCode,entry)"></button>
+                    <button class="button secondary icon icon-move-favorite ng-scope" type="button" data-saved-text="Saved to favorites" data-not-saved-text="Not saved to favorites" title="Toggle favorite" ng-click="addToFavourite(entry.variantCode,entry.isFavourite,entry)" ng-class="{'is-favorite':entry.isFavourite}" ng-if="true"></button><!-- end ngIf: true -->
+                    <label class="product-detail-list-item-actions-label" for="shopping-bag-quantity-options-4"></label>
+                    <div class="select-primary product-detail-list-item-quantity">
+                        <select name="product-detail-list-item-quantity-options-4" id="shopping-bag-quantity-options-4" data-validation="false" ng-change="updateQuantity(entry,entry.quantity)" ng-model="entry.quantity" ng-options="option for option in range(entry.maxQuantity)" class="ng-pristine ng-untouched ng-valid"><option value="0" selected="selected" label="1">1</option><option value="1" label="2">2</option><option value="2" label="3">3</option><option value="3" label="4">4</option><option value="4" label="5">5</option><option value="5" label="6">6</option><option value="6" label="7">7</option><option value="7" label="8">8</option><option value="8" label="9">9</option><option value="9" label="10">10</option></select>
+                    </div>
+                </div>               
             </li>
-            {{/each}}
-
         </ul>
+
+    </div>
+    <div id="cartPage-summary" class="grid col-4">
+        <div style="" class="shopping-bag-order-total sticky-on-scroll semi-sticky" data-sticky-offset="-20" data-sticky-stop-offset="-70">
+            <div class="box">
+                <h2 class="box-headline">ОБЩАЯ СТОИМОСТЬ ТОВАРОВ В КОРЗИНЕ</h2>
+                <div class="box-content discount-section">
+
+                </div>
+                <div class="box-content">
+                    <div class="shopping-bag-total">
+
+                        <table class="order-total">
+                            <tbody>
+                                <!-- ngRepeat: (key,value) in getContext().orderTotals.impositionType -->
+                                <!-- ngIf: getContext().orderTotals.externalTaxApplied && getContext().orderTotals.maxTaxApplied -->
+                                <tr>
+                                    <th scope="row">СТОИМОСТЬ ЗАКАЗА:</th>
+                                    <td><span id="newPriceSubtotal" class="ng-binding">5&nbsp;797 Pуб</span></td>
+                                </tr>
+                                <!-- ngIf: getContext().orderTotals.totalDiscount -->
+                                <!-- ngIf: getContext().orderTotals.staffCardDiscount -->
+                                <!-- ngIf: getContext().orderTotals.clubVoucherDiscount -->
+                                <!-- ngIf: getContext().orderTotals.totalGiftCardAmount -->
+                                <!-- ngIf: getContext().cartEntries.length > 0 || getContext().deliveryMode -->
+                                <tr ng-if="getContext().cartEntries.length > 0 || getContext().deliveryMode" class="ng-scope">
+                                    <th scope="row">ДОСТАВКА:</th>
+                                    <td class="ng-binding">99 Pуб</td>
+                                </tr><!-- end ngIf: getContext().cartEntries.length > 0 || getContext().deliveryMode -->
+                                <!-- ngIf: getContext().orderTotals.paymentCost -->
+                            </tbody>
+                            <tfoot>
+                                <!-- ngIf: getContext().orderTotals.totalBeforeRounding -->
+                                <!-- ngIf: getContext().orderTotals.rounding -->
+                                <tr>
+                                    <th scope="row">ИТОГО</th>
+                                    <td id="total_price_of_basket" class="ng-binding">
+                                        5&nbsp;896 Pуб
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <!-- ngIf: getContext().codLimitReached -->
+
+                        <button ng-click="proceedToCheckout()" class="button button-big" ng-disabled="getContext().cartEntries.length == 0 || (!isBrowserCompatible &amp;&amp; false)">
+                            ПЕРЕЙТИ К ОФОРМЛЕНИЮ ЗАКАЗА
+                        </button>
+                    </div>
+                    <p class="fine-print">Цены и стоимость доставки являются неподтвержденными до перехода к разделу оформления заказа.</p>
+                    <p class="fine-print">
+                        14-дневный период возврата товара, комиссия за возврат и возврат стоимости за неотправленный товар. Прочитать о&nbsp;
+                        <a class="overlay-trigger underline" href="/ru_ru/customer-service/return-link.html"> Прочитать о возврате и возмещении стоимости товара.</a>
+                    </p>
+                </div>
+                <div class="product-warning notice responsive ng-hide" ng-show="!isBrowserCompatible &amp;&amp; false"><p class="text icon-notice normal">basket.page.disabled.button.description</p></div>
+            </div>
+
+            <style>
+                .agreement-link {
+                    text-decoration: underline;
+                }
+
+                    .agreement-link:hover {
+                        text-decoration: none;
+                    }
+            </style>
+
+            <form id="view-join-club-modal" ng-submit="createClubAccount()" aria-hidden="true" class="hidden modal-content create-account-modal ng-pristine ng-valid ng-valid-pattern ng-valid-maxlength">
+                <h2 class="heading">Join H&amp;M Club!</h2>
+                <article class="hero-unit responsive ">
+                    <header class="hero-logo icon-hm-club-logo-light">H&amp;M CLUB</header>
+                    <p class="hero-text">You have items in your shopping bag that are eligible for special Club prices. Join H&amp;M Club to get this deal!</p>
+                </article>
+                <div class="modal-text">
+
+
+
+                    <div class="inputwrapper select-date required">
+                        <label class="label" for="dob">Дата рождения</label>
+                        <div class="merged-inputs">
+                            <input type="tel" autocomplete="bday-day" pattern="[0-9]*" inputmode="numeric" id="dob-day" class="input-day text-input ng-pristine ng-untouched ng-valid ng-valid-pattern ng-valid-maxlength" placeholder="DD" size="2" maxlength="2" ng-model="birthDateForm.dobDay">
+                            <span class="divider"> / </span>
+                            <input type="tel" autocomplete="bday-month" pattern="[0-9]*" inputmode="numeric" id="dob-month" class="input-month text-input ng-pristine ng-untouched ng-valid ng-valid-pattern ng-valid-maxlength" placeholder="MM" size="2" maxlength="2" ng-model="birthDateForm.dobMonth">
+                            <span class="divider"> / </span>
+                            <input type="tel" autocomplete="bday-year" pattern="[0-9]*" inputmode="numeric" id="dob-year" class="input-year text-input ng-pristine ng-untouched ng-valid ng-valid-pattern ng-valid-maxlength" placeholder="YYYY" size="4" maxlength="4" ng-model="birthDateForm.dobYear">
+                        </div>
+                        <input type="hidden" class="input-date" value="" data-min-age="18" data-min-age-text="Чтобы иметь возможность размещать заказы на нашем сайте, Вам должно быть 18 лет или более." data-format-text="Incorrect format" data-validation-minlength-text="Please enter your year of birth in a four digit format" data-show-text-after-this="true" data-validation-birthdate="true" data-validation-required="true" data-validation-required-text="Information is missing">
+                    </div>
+
+
+                </div>
+                <div class="sticky button-group">
+                    <div class="inputwrapper list-group required">
+                        <ul class="input-list">
+                            <li class="item">
+                                <input class="checkbox-input ng-pristine ng-untouched ng-valid" type="checkbox" id="club-concent_0" name="club-concent" data-validation-required="true" ng-model="birthDateForm.consent">
+                                <label class="checkbox-label" for="club-concent_0">
+
+                                    I accept the H&amp;M Club <a href="/ru_ru/customer-service/club-terms-link.html" class="agreement-link overlay-trigger">Terms &amp; conditions </a> and I am  18 years old.
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="input-info"></p>
+                    <button class="modalclose button secondary" type="button" ng-click="denyClubBenefits()">Skip</button>
+                    <input class="button primary" type="submit" value="JOIN H&amp;M CLUB" data-custom-classname="content-fill no-border" data-validate-before-open-modal="true">
+
+                </div>
+            </form>
+
+            <div id="confirm-modal" aria-hidden="true" class="hidden no-border modal-content create-account-modal">
+                <div class="modal-text responsive">
+                    <h2 class="heading">Welcome to H&amp;M Club!</h2>
+
+                    <article class="hero-unit responsive ">
+                        <header class="hero-logo icon-hm-club-logo-light">H&amp;M CLUB</header>
+                        <p class="hero-text">You are now a member of H&amp;M Club. You can earn pointson everything you buy! Use&nbsp;your&nbsp;points to unlock customised offers,fashionable rewards and invitations to exclusive events.</p>
+                    </article>
+                </div>
+                <div class="sticky button-group">
+
+                    <button onclick="location.href = 'https://www2.hm.com/ru_ru/checkout';" class="modalclose button secondary">OK</button>
+                </div>
+            </div>
+            <section class="legaltext parbase section ng-hide" ng-show="containsYellowPrice">
+                <h3 class="sub-sub-heading">CLUB BENEFITS</h3>
+                <p class="text">Join the club to receive fantastic offers!</p>
+                <p class="text">You can apply discount code for H&amp;M club in the checkout process</p>
+                <p class="text">There are many club benefits.</p>
+                <p class="text">You will get prompted to sign up for the club if you are not a club member and you have a club priced item in your shopping bag</p>
+            </section>
+
+
+
+
+
+            <!-- Only Content -->
+            <!--AEMPUBPRDEU28-->
+            <div class="parsys main">
+                <section class="legaltext parbase section">
+
+                    <h1 class="sub-sub-heading"></h1>
+                    <p class="text"></p>
+
+                </section>
+
+            </div>
+
+            <!-- /Only Content -->
+
+
+        </div>
+    </div>
+
+
+    <div class="hidden modal-content" id="error-popup">
+        <div class="modal-text">
+            <div class="shopping-bag-message">
+                <h1 class="heading ng-binding"></h1>
+                <p ng-bind-html="getContext().popupMessage" class="ng-binding"></p>
+                <form class="ng-pristine ng-valid">
+                    <div class="sticky button-group">
+                        <button ng-click="closePopup()" class="modalclose button">OK</button>
+                    </div>
+                </form>
+            </div>
+            </di
+        </div>
     </div>
 </div>
 
 
-<div class="row">
-    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-        <strong>Total:{{totalPrice}}</strong>
-    </div>
-</div>
-<hr />
-
-<div class="row">
-    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-        <a class="btn btn-success btn-xl" href="/checkout">
-            Chekout
-        </a>
-    </div>
-</div>
 
 
-{{else}}
-<div class="row">
-    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-        <h2>No items in cart</h2>
+
+
+
+
+
+
+
+
+
+    <!--{{#if products}}
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+            <ul class="list-group">
+                {{#each products}}
+                <li class="list-group-item">
+                    <span class="badge">
+                        {{this.qty}}
+                    </span>
+                    <strong>{{this.item.title}}</strong>
+                    <span class="label label-success">
+                        ${{this.price}}
+                    </span>
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">  Action  <span class="caret"></span>   </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">reduce by 1</a>
+                            </li>
+                            <li>
+                                <a href="#">remove all</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                {{/each}}
+
+            </ul>
+        </div>
     </div>
-</div>
-{{/if}}
+
+
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+            <strong>Total:{{totalPrice}}</strong>
+        </div>
+    </div>
+    <hr />
+
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+            <a class="btn btn-success btn-xl" href="/checkout">
+                Chekout
+            </a>
+        </div>
+    </div>
+
+
+    {{else}}
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+            <h2>No items in cart</h2>
+        </div>
+    </div>
+    {{/if}}-->
 
 
 
