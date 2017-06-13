@@ -32,11 +32,12 @@
   <ItemGroup>
     <Compile Include="app.js" />
     <Compile Include="config\passport.js" />
-    <Compile Include="models\cart.js" />
+    <Compile Include="modules\cart.js" />
     <Compile Include="models\category.js" />
     <Compile Include="models\product.js" />
     <Compile Include="models\session.js" />
     <Compile Include="models\user.js" />
+    <Compile Include="repository\product-repository.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\users.js" />
     <Compile Include="bin\www" />
@@ -82,6 +83,9 @@
     <Folder Include="bin\" />
     <Folder Include="models\" />
     <Folder Include="config\" />
+    <Folder Include="modules\" />
+    <Folder Include="repository\" />
+    <Folder Include="services\" />
     <Folder Include="public\fonts\" />
     <Folder Include="seed\" />
     <Folder Include="public\" />

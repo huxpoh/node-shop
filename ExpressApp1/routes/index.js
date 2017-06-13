@@ -1,14 +1,13 @@
 ﻿var express = require('express');
 var router = express.Router();
-var Product = require('../models/product');
 var csurf = require('csurf');
-var passport = require('passport');
-var Cart = require("../models/cart");
+var Cart = require("../modules/cart");
+var productRepo = require("../repository/product-repository.js");
+var Product = require('../models/product');
 
 var csurfProtection = csurf();
 router.use(csurfProtection);
 
-/* GET home page. */
 router.get('/', function (req, res, next) {
     Product.find(function (err, docs) {
 
@@ -18,6 +17,9 @@ router.get('/', function (req, res, next) {
         for (var i = 0; i < docs.length; i += chunkSize) {
             productChunks.push(docs.slice(i, i + chunkSize));
         }
+
+        var a = new productRepo();
+        a.getProd();
          
         res.render('shop/index', { title: 'Shopping Cart', products: productChunks, csrfToken: req.csrfToken()});
     });
