@@ -76,20 +76,3 @@
         <!--<span class="js-cookie-message-url" data-message-url="/ru_ru/_jcr_content/header.cookies.html"></span>-->
     </div>
 </header>
-
-
-<script type="text/javascript">
-    $(".js-open-signin-signup").click(function (e) {
-        e.preventDefault();
-        $(this).next().toggle();
-    });
-
-    $(".signin-button").click(function (e) {
-        e.preventDefault();
-
-        $.post('/user/signin', $(this).closest('form').serialize())
-            .done(function (data) {
-                $("#logn").html(data);
-            })
-    });
-</script>

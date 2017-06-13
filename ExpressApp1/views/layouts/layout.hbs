@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="/checkout.min.css" type="text/css">
     <link rel="stylesheet" href="/myhm.min.css" type="text/css">
     <link rel="stylesheet" href="/icons.data.svg.css" media="screen" type="text/css">
-    <title>Мужские носки по самым выгодным ценам | H&amp;M RU{{title}}</title>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Мужские носки по самым выгодным ценам | H&amp;M RU{{title}}</title> 
 </head>
 <body>
     {{> pop-up }}
@@ -47,5 +46,27 @@
     <div class="modaloverlay responsive hidden">
         <div class="modalbackground"></div>
     </div>
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {{{_sections.script}}}
+    <script type="text/javascript">
+        $("body").click(function () {
+            $(".popup").hide();
+        });
+
+
+        $('[class*="js-open"]')
+        .click(function (e) {
+            console.log('popagination 2222');
+            e.stopPropagation();
+        });
+
+       
+        $(".popup").click(function (e) {
+            console.log('popagination');
+            e.stopPropagation();
+        });
+    </script>
 </body>
 </html>

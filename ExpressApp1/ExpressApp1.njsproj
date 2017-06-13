@@ -40,6 +40,7 @@
     <Compile Include="routes\index.js" />
     <Compile Include="routes\users.js" />
     <Compile Include="bin\www" />
+    <Compile Include="seed\category-seed.js" />
     <Compile Include="seed\product-seed.js" />
     <Content Include="package.json" />
     <Content Include="public\checkout.min.css" />
@@ -61,6 +62,7 @@
     <Content Include="views\layouts\layout.hbs" />
     <Content Include="views\partials\breadcrumb.hbs" />
     <Content Include="views\partials\cart.hbs" />
+    <Content Include="views\partials\filter.hbs" />
     <Content Include="views\partials\footer.hbs" />
     <Content Include="views\partials\header.hbs" />
     <Content Include="views\partials\nav-menu.hbs" />

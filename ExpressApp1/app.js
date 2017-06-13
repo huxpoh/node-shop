@@ -12,21 +12,33 @@ var validator = require('express-validator');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
-var app = express();
 var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo/es5')(session);
 
+var app = express();
+
 mongoose.connect('localhost:27017/shopping');
 require('./config/passport');
 
-// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-app.engine('.hbs', expressHbs({ defaultLayout: 'layout', extname: '.hbs' }));
+app.engine('.hbs', expressHbs({
+    defaultLayout: 'layout', extname: '.hbs', helpers: {
+        section: function (name, options) {
+            if (!this._sections) {
+                this._sections = {};
+            }
 
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+            this._sections[name] += options.fn(this);
+            return null;
+        }
+    }
+}));
+
+
+app.use(favicon(__dirname + '/public/favicon.png'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -52,7 +64,7 @@ app.use(function (req, res, next) {
     app.locals.session = req.session;
 
     if (req.isAuthenticated()) {
-       app.locals.user = req.user.email;
+        app.locals.user = req.user.email;
     }
 
     next();

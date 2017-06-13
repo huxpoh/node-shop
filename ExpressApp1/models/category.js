@@ -3,8 +3,8 @@ var Schema = mongoose.Schema;
 
 var schema = new Schema({
     title: { type: String, required: true },
-    description: { type: String, required: true },
-    parentCategoryId: { type: String, required: false }
+    description: { type: String, enum: ['categorized', 'custom', 'main','sub-main'] },
+    parentCategoryId: { type: Schema.Types.ObjectId}
 });
 
-module.exports = mongoose.model('Product', schema)
+module.exports = mongoose.model('Category', schema)

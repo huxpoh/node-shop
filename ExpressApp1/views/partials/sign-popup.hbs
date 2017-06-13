@@ -3,17 +3,16 @@
         <div class="signin rollover-popdown" data-target="click">
             {{# if session.passport.user}}
             <div class="signin-signed-in">
-                <span class="greeting-text"> 
-                    <a class="goto-signed-in" href="/user/profile" > Добрый день, {{user}}</a>
+                <span class="greeting-text">
+                    <a class="goto-signed-in" href="/user/profile"> Добрый день, {{user}}</a>
                 </span>
                 <a class="goto-sign-in" href="/user/logout">Выйти</a>
             </div>
-            {{else
-}}
+            {{else}}
             <div class="signin-not-signed-in">
                 <a class="goto-my-hm" href="https://www2.hm.com/ru_ru/my-account">Мой H&amp;M</a>
                 <a href="/user/signup" class="js-open-signin-signup">Зарегистрироваться / Войти</a>
-                <div class="signin-rollover popdown row">
+                <div class="signin-rollover popdown row popup">
                     <div class="inner">
                         <div class="signin-rollover-login">
                             <form class="responsive form-section" method="post" action="/user/signin">
@@ -35,7 +34,7 @@
                                     </p>
                                 </div>
                                 <div class="input-group join">
-                                    <a type="button" href="/user/signup" class="large fluid secondary button">ПРИСОЕДИНЯЙТЕСЬ К НАМ </a>
+                                    <a type="button" href="/user/signup" class="large fluid secondary button sign-up">ПРИСОЕДИНЯЙТЕСЬ К НАМ </a>
                                 </div>
                             </form>
                         </div>
@@ -75,7 +74,7 @@
                                         </ul>
                                         <div class="button-group">
                                             <button type="submit" class="button large" data-validation-text="Эту форму не удалось отправить. Пожалуйста, проверьте указанную Вами информацию">ПРИСОЕДИНЯЙТЕСЬ К НАМ</button>
-                                            <button type="button" class="big secondary button large" onclick="trackClickButtonBack()">ВЕРНУТЬСЯ, ЧТОБЫ ВОЙТИ</button>
+                                            <button type="button" class="big secondary button large return-popup-login">ВЕРНУТЬСЯ, ЧТОБЫ ВОЙТИ</button>
                                         </div>
                                     </fieldset>
                                 </form>
@@ -88,3 +87,36 @@
         </div>
     </div>
 </div>
+
+{{#section 'script'}}
+    <script type="text/javascript">
+        $(".js-open-signin-signup").click(function (e) {
+            e.preventDefault();
+
+            $(this).next().toggle(70);
+        });
+
+        $(".signin-button").click(function (e) {
+            e.preventDefault();
+
+            $.post('/user/signin', $(this).closest('form').serialize())
+                .done(function (data) {
+                    $("#logn").html(data);
+                })
+        });
+
+
+        $(".sign-up").click(function (e) {
+            e.preventDefault();
+            $('.signin-rollover-login').hide();
+            $('.signin-rollover-join').toggle(70);
+        });
+
+        $(".return-popup-login").click(function (e) {
+            e.preventDefault();
+            $('.signin-rollover-login').show();
+            $('.signin-rollover-join').hide(70);
+        });        
+        
+    </script>
+{{/section}}

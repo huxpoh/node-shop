@@ -104,7 +104,7 @@ var products = [
 var done = 0;
 
 for (var i = 0; i < products.length; i++) {
-    console.log("115151");
+    console.log("product item added " + i);
     products[i].save(function(err,result) {
         done++;
         if (done === products.length) {
