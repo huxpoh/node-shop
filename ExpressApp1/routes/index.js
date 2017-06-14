@@ -2,27 +2,23 @@
 var router = express.Router();
 var csurf = require('csurf');
 var Cart = require("../modules/cart");
-var productRepo = require("../repository/product-repository.js");
+var ProductService = require("../services/product-service");
 var Product = require('../models/product');
 
 var csurfProtection = csurf();
 router.use(csurfProtection);
 
-router.get('/', function (req, res, next) {
-    Product.find(function (err, docs) {
+router.get('/:pageSize*?', function(req, res, next) {
 
-        var productChunks = [];
-        var chunkSize = 3;
+        var prodService = new ProductService();
 
-        for (var i = 0; i < docs.length; i += chunkSize) {
-            productChunks.push(docs.slice(i, i + chunkSize));
-        }
+        prodService.getProductPaggedList(10, req.params.pageSize || 0, 3,
 
-        var a = new productRepo();
-        a.getProd();
-         
-        res.render('shop/index', { title: 'Shopping Cart', products: productChunks, csrfToken: req.csrfToken()});
-    });
+            function (productChunks, page, pages) {
+                res.render('shop/index',
+                    { title: 'Shopping Cart', products: productChunks, csrfToken: req.csrfToken() });
+            }
+    );
 });
 
 router.get('/cart-partial', function (req, res, next) {

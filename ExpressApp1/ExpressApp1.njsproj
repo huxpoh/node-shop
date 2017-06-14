@@ -43,6 +43,7 @@
     <Compile Include="bin\www" />
     <Compile Include="seed\category-seed.js" />
     <Compile Include="seed\product-seed.js" />
+    <Compile Include="services\product-service.js" />
     <Content Include="package.json" />
     <Content Include="public\checkout.min.css" />
     <Content Include="public\fonts\hmampersand_bold.woff" />
