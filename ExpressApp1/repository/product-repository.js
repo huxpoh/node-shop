@@ -5,9 +5,7 @@ function ProductRepository() {
 
     self.getProductList = function (take, skip, callback, sort) {
         
-        Product.find()
-            .limit(take)
-            .skip(skip)
+        Product.find().limit(take).skip(skip)
             .sort({
                 name: sort || 'asc'
             })
@@ -17,6 +15,7 @@ function ProductRepository() {
     };
 
     self.getProductCount = function (callback) {
+
         Product.count().exec(function (err, count) {
             callback(count);
         });

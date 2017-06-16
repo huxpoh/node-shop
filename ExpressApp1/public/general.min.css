@@ -17500,6 +17500,10 @@ html[lang=zh] .button.button-chat > span, html[lang=zh] .story-item.story-item-n
             float: right;
         }
 
+        .product-filters .triggers > li.paging {
+            float: right;
+        }
+
             .product-filters .triggers > li.sort-by .menu-link {
                 padding: 14px 18px;
             }
@@ -17558,7 +17562,8 @@ html[lang=zh] .button.button-chat > span, html[lang=zh] .story-item.story-item-n
                 position: absolute;
                 top: 44%;
                 right: 10px;
-                content: "";
+                content: " ";
+                color: #000;
                 height: 0;
                 width: 0;
                 border-color: transparent;
@@ -17567,6 +17572,8 @@ html[lang=zh] .button.button-chat > span, html[lang=zh] .story-item.story-item-n
                 border-top-color: #0d0d0d;
                 z-index: 1;
             }
+
+
 
         .product-filters .triggers > li.isOpen .trigger:after {
             top: 36%;
