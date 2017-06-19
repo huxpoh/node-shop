@@ -76,6 +76,7 @@
     <Content Include="views\shop\items.txt" />
     <Content Include="views\shop\shopping-cart.hbs" />
     <Content Include="views\shop\index.hbs" />
+    <Content Include="views\template.hbs" />
     <Content Include="views\user\profile.hbs" />
     <Content Include="views\user\signin.hbs" />
     <Content Include="views\user\signup.hbs" />

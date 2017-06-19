@@ -8,18 +8,27 @@ var Product = require('../models/product');
 var csurfProtection = csurf();
 router.use(csurfProtection);
 
-router.get('/:pageSize*?', function(req, res, next) {
 
-        var prodService = new ProductService();
+var Handlebars = require("handlebars");
+var paginate = require('handlebars-paginate');
 
-        prodService.getProductPaggedList(10, req.params.pageSize || 0, 3,
+Handlebars.registerHelper('paginate', paginate);
 
-            function (productChunks, page, pages) {
-                res.render('shop/index',
-                    { title: 'Shopping Cart', products: productChunks, csrfToken: req.csrfToken() });
-            }
+router.get('/:pageSize*?', function (req, res, next) {
+
+    var prodService = new ProductService();
+
+    prodService.getProductPaggedList(10, req.params.pageSize-1 || 0, 3,
+
+        function (productChunks, currentPage, pageCount) {
+
+            res.render('shop/index', {
+                title: 'Shopping Cart', products: productChunks, csrfToken: req.csrfToken(), pagination: {page: currentPage, pageCount: parseInt(Math.ceil(pageCount / 10))  }
+            });
+        }
     );
 });
+
 
 router.get('/cart-partial', function (req, res, next) {
     res.render('partials/cart', { layout: false });
@@ -27,19 +36,19 @@ router.get('/cart-partial', function (req, res, next) {
 
 router.get('/add-to-cart/:id', function (req, res, next) {
     var productId = req.params.id;
-    var cart = new Cart(req.session.cart ? req.session.cart : {  });
+    var cart = new Cart(req.session.cart ? req.session.cart : {});
 
-    Product.findById(productId,function(err, product) {
-            if (err) {
-                return res.redirect("/");
-            }
+    Product.findById(productId, function (err, product) {
+        if (err) {
+            return res.redirect("/");
+        }
 
-            cart.add(product, product.id);
-            req.session.cart = cart;
-            console.log(req.session.cart);
+        cart.add(product, product.id);
+        req.session.cart = cart;
+        console.log(req.session.cart);
 
-            return !req.xhr ? res.redirect('/') :
-                              res.render('partials/cart', { layout: false });
+        return !req.xhr ? res.redirect('/') :
+            res.render('partials/cart', { layout: false });
     });
 });
 

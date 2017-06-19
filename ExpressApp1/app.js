@@ -38,6 +38,8 @@ app.engine('.hbs', expressHbs({
     }
 }));
 
+
+
 app.use(favicon(__dirname + '/public/favicon.png'));
 app.use(logger('dev'));
 app.use(bodyParser.json());

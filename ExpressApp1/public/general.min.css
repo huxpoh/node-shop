@@ -23663,3 +23663,17 @@ html[lang=zh] .button.button-chat > span, html[lang=zh] .story-item.story-item-n
 .mediumarticleteaserwimage-min-heigh {
     min-height: 274px;
 }
+
+
+ ul.hr {
+            margin: 0; /* Обнуляем значение отступов */
+            padding: 4px; /* Значение полей */
+        }
+
+            ul.hr li {
+                display: inline; /* Отображать как строчный элемент */
+                margin-right: 5px; /* Отступ слева */
+                border: 1px solid #c8c8c8;
+                padding: 7px; /* Поля вокруг текста */
+                font-weight: bold;
+            }

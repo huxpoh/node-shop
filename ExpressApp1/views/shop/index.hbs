@@ -33,11 +33,30 @@
                 </ul>
 
             </div>
-            <div class="grid col-3 filter-group toggle-images">
-
-            </div>
+            
         </div>
     </div>
+
+    <div style="margin:0 auto; width:70%; margin-bottom:20px;">
+        <ul class="hr"> 
+            {{#paginate pagination type="first"}}
+            <li {{#if disabled}} class="disabled" {{/if}}><a href="/{{n}}">Первая</a></li>
+            {{/paginate}}
+            {{#paginate pagination type="previous"}}
+            <li {{#if disabled}} class="disabled" {{/if}}><a href="/{{n}}">Пред.</a></li>
+            {{/paginate}}
+            {{#paginate pagination type="middle" limit="4"}}
+            <li {{#if active}} class="active" {{/if}}><a href="/{{n}}">{{n}}</a></li>
+            {{/paginate}}
+            {{#paginate pagination type="next"}}
+            <li {{#if disabled}} class="disabled" {{/if}}><a href="/{{n}}">След.</a></li>
+            {{/paginate}}
+            {{#paginate pagination type="last"}}
+            <li {{#if disabled}} class="disabled" {{/if}}><a href="/{{n}}">Последняя</a></li>
+            {{/paginate}}
+        </ul>
+    </div>
+
 
     <div class="product-items-wrapper">
         <section class="product-items big productlist-row">
@@ -91,6 +110,28 @@
             </div>
         </section>
     </div>
+
+
+    <div class="pagination pagination-centered">
+        <ul>
+            {{#paginate pagination type="first"}}
+            <li {{#if disabled}} disable="disabled" {{/if}}><a href="?p={{n}}">First</a></li>
+            {{/paginate}}
+            {{#paginate pagination type="previous"}}
+            <li {{#if disabled}} class="disabled" {{/if}}><a href="?p={{n}}">Prev</a></li>
+            {{/paginate}}
+            {{#paginate pagination type="middle" limit="7"}}
+            <li {{#if active}} class="active" {{/if}}><a href="?p={{n}}">{{n}}</a></li>
+            {{/paginate}}
+            {{#paginate pagination type="next"}}
+            <li {{#if disabled}} class="disabled" {{/if}}><a href="?p={{n}}">Next</a></li>
+            {{/paginate}}
+            {{#paginate pagination type="last"}}
+            <li {{#if disabled}} class="disabled" {{/if}}><a href="?p={{n}}">Last</a></li>
+            {{/paginate}}
+        </ul>
+    </div>
+
 
     <a class="load-more-link button infinite-scroll"
        data-offset-query-param="offset"
