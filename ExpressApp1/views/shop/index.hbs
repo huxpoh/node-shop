@@ -20,8 +20,7 @@
     <!-- ОТОБРАЖАЕТСЯ -->
     <div class="row">
         <div class="model-and-product-switch">
-            <div class="grid col-6">
-
+            <div class="grid col-2">
                 <ul>
                     <li class="right">
                         <span class="filterinfo">
@@ -31,31 +30,33 @@
                         </span>
                     </li>
                 </ul>
+            </div>
+            <div class="grid col-7 right">
+                <div style="float: right; margin-bottom:20px;">
+                    <ul class="hr" style="float: right; margin-right: -9px;">
+                        {{#paginate pagination type="first"}}
+                        <li {{#if disabled}} class="disabled" {{/if}}><a href="/{{n}}">Первая</a></li>
+                        {{/paginate}}
+                        {{#paginate pagination type="previous"}}
+                        <li {{#if disabled}} class="disabled" {{/if}}><a href="/{{n}}">Пред.</a></li>
+                        {{/paginate}}
+                        {{#paginate pagination type="middle" limit="4"}}
+                        <li {{#if active}} class="active" {{/if}}><a href="/{{n}}">{{n}}</a></li>
+                        {{/paginate}}
+                        {{#paginate pagination type="next"}}
+                        <li {{#if disabled}} class="disabled" {{/if}}><a href="/{{n}}">След.</a></li>
+                        {{/paginate}}
+                        {{#paginate pagination type="last"}}
+                        <li {{#if disabled}} class="disabled" {{/if}}><a href="/{{n}}">Последняя</a></li>
+                        {{/paginate}}
+                    </ul>
+                </div>
 
             </div>
-            
         </div>
     </div>
 
-    <div style="margin:0 auto; width:70%; margin-bottom:20px;">
-        <ul class="hr"> 
-            {{#paginate pagination type="first"}}
-            <li {{#if disabled}} class="disabled" {{/if}}><a href="/{{n}}">Первая</a></li>
-            {{/paginate}}
-            {{#paginate pagination type="previous"}}
-            <li {{#if disabled}} class="disabled" {{/if}}><a href="/{{n}}">Пред.</a></li>
-            {{/paginate}}
-            {{#paginate pagination type="middle" limit="4"}}
-            <li {{#if active}} class="active" {{/if}}><a href="/{{n}}">{{n}}</a></li>
-            {{/paginate}}
-            {{#paginate pagination type="next"}}
-            <li {{#if disabled}} class="disabled" {{/if}}><a href="/{{n}}">След.</a></li>
-            {{/paginate}}
-            {{#paginate pagination type="last"}}
-            <li {{#if disabled}} class="disabled" {{/if}}><a href="/{{n}}">Последняя</a></li>
-            {{/paginate}}
-        </ul>
-    </div>
+   
 
 
     <div class="product-items-wrapper">
@@ -146,4 +147,11 @@
        aria-hidden="true">Загрузить еще изделия</a>
     <div class="clearfix"></div>
 </div>
+
+{{#section 'script'}}
+
+
+
+{{/section}}
+
 

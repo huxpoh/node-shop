@@ -5,7 +5,14 @@
             <div class="section-menu-sub-menu">
                 <div class="section-menu-sub-menu-inner">
                     <div class="section-menu-categories">
-                        <div class="section-menu-category">
+                        {{#global "docs"}}
+                            {{#each this}}
+                            <h1>{{title}}</h1>
+                            {{/each}}
+                        {{/global}}
+
+                        
+                        <!--<div class="section-menu-category">
                             <h4 class=""> <span>Новые поступления</span> </h4>
                             <ul style="display: block;">
                                 <li class="section-menu-subdepartment"> <a href="http://www2.hm.com/ru_ru/muzhchiny/novye-postupleniya/odezhda.html"> Одежда </a> </li>
@@ -81,7 +88,7 @@
                             <ul style="display: block;">
                                 <li class="section-menu-subdepartment"> <a href="http://www2.hm.com/ru_ru/muzhchiny/hmgallery/h-m-gallery.html"> #HM Gallery </a> </li>
                             </ul>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>

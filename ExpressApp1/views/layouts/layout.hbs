@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="/checkout.min.css" type="text/css">
     <link rel="stylesheet" href="/myhm.min.css" type="text/css">
     <link rel="stylesheet" href="/icons.data.svg.css" media="screen" type="text/css">
+
+    <link type="text/css" rel="stylesheet" href="css/normalize.css">
+    <link type="text/css" rel="stylesheet" href="css/ion.rangeSlider.css">
+    <link type="text/css" rel="stylesheet" href="css/ion.rangeSlider.skinFlat.css">
+   
     <title>Мужские носки по самым выгодным ценам | H&amp;M RU{{title}}</title> 
 </head>
 <body>
@@ -65,6 +70,27 @@
             console.log('popagination');
             e.stopPropagation();
         });
+    </script>
+
+    <script type="text/javascript" src="/scripts/ion.rangeSlider.min.js"></script>
+
+    
+
+    <script type="text/javascript">
+        $(function () {
+            $("#range").ionRangeSlider({
+                hide_min_max: true,
+                keyboard: true,
+                min: 0,
+                max: 5000,
+                from: 1000,
+                to: 4000,
+                type: 'double',
+                step: 1,
+                prefix: "$",
+                grid: true
+            });
+         });
     </script>
 </body>
 </html>

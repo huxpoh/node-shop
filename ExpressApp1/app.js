@@ -8,6 +8,7 @@ var expressHbs = require('express-handlebars');
 var passport = require('passport');
 var flash = require('connect-flash');
 var validator = require('express-validator');
+var Handlebars = require("handlebars");
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -19,11 +20,14 @@ var MongoStore = require('connect-mongo/es5')(session);
 
 var app = express();
 
+//var Category = require('../models/category');
+
 mongoose.connect('localhost:27017/shopping');
 require('./config/passport');
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
 
 app.engine('.hbs', expressHbs({
     defaultLayout: 'layout', extname: '.hbs', helpers: {
@@ -38,7 +42,10 @@ app.engine('.hbs', expressHbs({
     }
 }));
 
-
+Handlebars.registerHelper('global',
+    function(context, options) {
+        return options.fn(JSON.stringify(global[context])); // Object is Backbone Collection
+    });
 
 app.use(favicon(__dirname + '/public/favicon.png'));
 app.use(logger('dev'));
@@ -47,6 +54,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(validator());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/scripts', express.static(__dirname + '/node_modules/ion-rangeslider/js/'));
+app.use('/css', express.static(__dirname + '/node_modules/ion-rangeslider/css/'));
+app.use('/img', express.static(__dirname + '/node_modules/ion-rangeslider/img/'));
 
 app.use(session({
     secret: 'secret',
@@ -103,5 +114,8 @@ app.use(function (err, req, res, next) {
         error: {}
     });
 });
+
+
+
 
 module.exports = app;

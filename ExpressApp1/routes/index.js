@@ -4,6 +4,7 @@ var csurf = require('csurf');
 var Cart = require("../modules/cart");
 var ProductService = require("../services/product-service");
 var Product = require('../models/product');
+var Category = require('../models/category');
 
 var csurfProtection = csurf();
 router.use(csurfProtection);
@@ -17,13 +18,15 @@ Handlebars.registerHelper('paginate', paginate);
 router.get('/:pageSize*?', function (req, res, next) {
 
     var prodService = new ProductService();
-
+    console.log(global.docs);
     prodService.getProductPaggedList(10, req.params.pageSize-1 || 0, 3,
-
+       
         function (productChunks, currentPage, pageCount) {
-
-            res.render('shop/index', {
-                title: 'Shopping Cart', products: productChunks, csrfToken: req.csrfToken(), pagination: {page: currentPage, pageCount: parseInt(Math.ceil(pageCount / 10))  }
+                    res.render('shop/index', {
+                        title: 'Shopping Cart',
+                        products: productChunks,
+                        csrfToken: req.csrfToken(),
+                        pagination: { page: currentPage, pageCount: parseInt(Math.ceil(pageCount / 10)) }
             });
         }
     );
